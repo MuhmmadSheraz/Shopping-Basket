@@ -7,3 +7,9 @@
     font-weight: bold;
     outline: none !important;
 }
+.full-zindex{
+z-index: 99;
+}
+.nav-wrapper{
+    padding-bottom: 60px;
+}

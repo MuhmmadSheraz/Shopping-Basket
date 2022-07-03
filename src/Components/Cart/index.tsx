@@ -1,71 +1,71 @@
-import React, { useEffect, useState } from "react";
-import "./cart.css";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from 'react'
+import './cart.css'
+import { useSelector, useDispatch } from 'react-redux'
 import {
   removeFromCart,
   updateCart,
   checkout,
-} from "../../Reducers/cartReducer";
-import { cartItemType, cardType3, stateType } from "../Types/type";
-import { ToastContainer, toast } from "react-toastify";
+} from '../../Reducers/cartReducer'
+import { cartItemType, cardType3, stateType } from '../Types/type'
+import { ToastContainer, toast } from 'react-toastify'
 
 const Cart = () => {
-  const dispatch = useDispatch();
-  let [a, setA] = useState(0);
-  const [data, setData] = useState<cardType3[ ]>([]);
+  const dispatch = useDispatch()
+  let [a, setA] = useState(0)
+  const [data, setData] = useState<cardType3[]>([])
   let cartValue = useSelector((state: stateType) => {
-    return state.cartSlice.cartArray;
-  });
+    return state.cartSlice.cartArray
+  })
 
   const handleTotal = () => {
-    let p = 0;
+    let p = 0
     cartValue &&
       cartValue?.map((x: cardType3) => {
-        p = p + x.subTotal;
-        setA(p);
-      });
-  };
+        p = p + x.subTotal
+        setA(p)
+      })
+  }
   useEffect(() => {
-    setData(cartValue);
-    handleTotal();
-  }, [cartValue]);
+    setData(cartValue)
+    handleTotal()
+  }, [cartValue])
   if (data.length === 0) {
     return (
       <h1
-        className="mt-5  "
+        className="mt-3"
         style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
         }}
       >
         Cart Is Empty
       </h1>
-    );
+    )
   }
 
   const handleChange = (e: any, id: string) => {
-    let Quantity = e.target.value;
+    let Quantity = e.target.value
     let obj = {
       Quantity,
       id,
-    };
-    dispatch(updateCart(obj));
-    handleTotal();
-  };
+    }
+    dispatch(updateCart(obj))
+    handleTotal()
+  }
   const handleCheckout = () => {
-    toast.success("✔️ ThankYou For Shopping ", {
-      position: "top-center",
+    toast.success('✔️ ThankYou For Shopping ', {
+      position: 'top-center',
       autoClose: 5200,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-    });
-    dispatch(checkout());
-  };
+    })
+    dispatch(checkout())
+  }
   return (
     <div>
       <ToastContainer
@@ -78,7 +78,7 @@ const Cart = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      />{" "}
+      />{' '}
       <div className="container">
         <div className="row rowBar ">
           <div className="col-sm-6 col">Products</div>
@@ -99,7 +99,7 @@ const Cart = () => {
                       <p
                         className="removeBtn dynamic_Cart_Data"
                         onClick={() => {
-                          dispatch(removeFromCart(item.id));
+                          dispatch(removeFromCart(item.id))
                         }}
                       >
                         Remove
@@ -120,7 +120,7 @@ const Cart = () => {
                   {item.price * item.Quantity}
                 </div>
               </div>
-            );
+            )
           })}
         <div className="row">
           <div className="col-md-3"></div>
@@ -128,9 +128,9 @@ const Cart = () => {
           <div className="col-md-6 col-sm-12  col subTotal">
             <div
               style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop: "5px",
+                display: 'flex',
+                justifyContent: 'space-between',
+                marginTop: '5px',
               }}
             >
               <span>Total </span>
@@ -143,7 +143,7 @@ const Cart = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart

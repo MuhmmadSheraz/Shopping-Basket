@@ -1,16 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./navbar.css";
+import { Link } from 'react-router-dom'
+import './navbar.css'
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 const Navbaar = () => {
   const value = useSelector((state: any) => {
-    return state.cartSlice.cartArray.length;
-  });
+    return state.cartSlice.cartArray.length
+  })
   return (
-    <div className="W-100">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">
+    <div className="nav-wrapper">
+      <nav className="navbar navbar-expand-lg navbar-light bg-warning position-fixed full-zindex w-100 ">
+        <a className="navbar-brand " href="/">
           Shopping Basket
         </a>
         <button
@@ -44,7 +43,7 @@ const Navbaar = () => {
         </div>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default Navbaar;
+export default Navbaar

@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { removeFromFav } from "../../Reducers/favouriteReducer";
-import { useDispatch, useSelector } from "react-redux";
-import { cardType3, stateType } from "../Types/type";
+import React, { useState, useEffect } from 'react'
+import { removeFromFav } from '../../Reducers/favouriteReducer'
+import { useDispatch, useSelector } from 'react-redux'
+import { cardType3, stateType } from '../Types/type'
 const Favourites = () => {
-  const [data, setData] = useState<cardType3[]>([]);
-  const dispatch = useDispatch();
+  const [data, setData] = useState<cardType3[]>([])
+  const dispatch = useDispatch()
   let favValue = useSelector((state: stateType) => {
-    return state.favSlice.favArray;
-  });
+    return state.favSlice.favArray
+  })
   useEffect(() => {
-    setData(favValue);
-  }, [favValue]);
+    setData(favValue)
+  }, [favValue])
   if (data.length == 0)
     return (
-      <h1 className="d-flex justify-content-center align-item-center">
+      <h1 className="d-flex justify-content-center align-item-center h-100 mt-2">
         No Favourites Added
       </h1>
-    );
+    )
   return (
     <div className="container mt-5">
       <div className="row ">
@@ -43,11 +43,11 @@ const Favourites = () => {
                   </div>
                 </div>
               </div>
-            );
+            )
           })}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Favourites;
+export default Favourites
